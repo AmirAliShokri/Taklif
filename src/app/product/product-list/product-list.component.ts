@@ -55,7 +55,7 @@ export class ProductListComponent implements OnInit {
     this.productList = [];
   }
   Pay(code){
-    this.router.navigate(['/product-pay', code]);
+    // this.router.navigate(['/product-pay', code]);
   }
   onSubmit(form: FormGroup){
     this.productList.push({

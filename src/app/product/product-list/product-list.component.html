@@ -29,7 +29,7 @@
             <i class="bi bi-x" style="color: #ff2525;" *ngIf="!item.IsAvailable"></i>
           </td>
           <td>
-            <button class="btn btn-secondary btn-group" routerLink="['/product-pay','item.Code']" (click)="Pay(item.Code)" *ngIf="item.IsAvailable && item.count != 0"><span style="color: black;">خرید</span></button>
+            <button class="btn btn-secondary btn-group" [routerLink]="['/product-pay',item.Code]" (click)="Pay(item.Code)" *ngIf="item.IsAvailable && item.count != 0"><span style="color: black;">خرید</span></button>
           </td>
         </tr>
     </table>
