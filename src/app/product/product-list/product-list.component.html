@@ -1,0 +1,92 @@
+<div>
+    <ul class="nav nav-pills">
+    <li class="nav-item">
+       <span class="nav-link fw-bold link-success btn" (click)="Add(content)">افزودن</span>
+    </li>
+    <li class="nav-item">
+      <span class="nav-link fw-bold link-danger btn" (click)="Del()">حذف همه</span>
+    </li>
+  </ul>
+</div>
+
+<div class="container col-md-10">
+    <table class="table table-bordered table-striped table-hover">
+        <tr class="table-secondary">
+            <th class="fw-bold">کد</th>
+            <th class="fw-bold">نام محصول</th>
+            <th class="fw-bold">قیمت</th>
+            <th class="fw-bold">تعداد</th>
+            <th class="fw-bold">موجودی</th>
+            <th class="fw-bold">عملیات</th>
+        </tr>
+        <tr *ngFor="let item of productList">
+          <td>{{item.Code}}</td>
+          <td>{{item.Name}}</td>
+          <td>{{item.Price}}</td>
+          <td>{{item.count}}</td>
+          <td>
+            <i class="bi bi-check2" style="color: #25ff25;" *ngIf="item.IsAvailable"></i>
+            <i class="bi bi-x" style="color: #ff2525;" *ngIf="!item.IsAvailable"></i>
+          </td>
+          <td>
+            <button class="btn btn-secondary btn-group" routerLink="['/product-pay','item.Code']" (click)="Pay(item.Code)" *ngIf="item.IsAvailable && item.count != 0"><span style="color: black;">خرید</span></button>
+          </td>
+        </tr>
+    </table>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header " style="direction: rtl;">
+    <h4>افزودن محصول</h4>
+  </div>
+  <div class="modal-body">
+    <div class="container justify-content-center">
+      <form #form [formGroup]="productForm" (ngSubmit)='onSubmit(productForm)'>
+          <div class="row mb-2">
+              <div class="input-group inp-div">
+                  <span class="input-group-text">کد</span>
+                  <input class="form-control" formControlName='Code' type="number" placeholder="کد محصول"/>
+              </div>
+              <div class="inp-error col-md-12" *ngIf="productForm.get('Code').invalid && (productForm.get('Code').dirty || productForm.get('Code').touched)">
+                  <small class="inp-error">لطفا کد محصول را وارد کنید</small>
+              </div>
+          </div>
+          <div class="row mb-2">
+              <div class="input-group inp-div">
+                  <span class="input-group-text">نام</span>
+                  <input class="form-control" formControlName='Name' placeholder="نام محصول"/>
+              </div>
+              <div class="inp-error col-md-12" *ngIf="productForm.get('Name').invalid && (productForm.get('Name').dirty || productForm.get('Name').touched)">
+                  <small class="inp-error">لطفا نام محصول را وارد کنید</small>
+              </div>
+          </div>
+          <div class="row mb-2">
+              <div class="input-group inp-div">
+                  <span class="input-group-text">قیمت</span>
+                  <input class="form-control" formControlName='Price' type="number" placeholder="قیمت محصول"/>
+              </div>
+              <div class="inp-error col-md-12" *ngIf="productForm.get('Price').invalid && (productForm.get('Price').dirty || productForm.get('Price').touched)">
+                  <small class="inp-error">لطفا قیمت محصول را وارد کنید</small>
+              </div>
+          </div>
+          <div class="row mb-2">
+              <div class="input-group inp-div">
+                  <span class="input-group-text">تعداد</span>
+                  <input class="form-control" formControlName='count' type="number" placeholder="تعداد محصول"/>
+              </div>
+              <div class="inp-error col-md-12" *ngIf="productForm.get('count').invalid && (productForm.get('count').dirty || productForm.get('count').touched)">
+                  <small class="inp-error">لطفا تعداد محصول را وارد کنید</small>
+              </div>
+          </div>
+          <div class="row mb-2">
+            <button type="submit" class="btn btn-primary mce-btn-group" [disabled]="productForm.invalid">ثبت</button>
+          </div>
+      </form>
+  </div>
+  </div>
+  <!-- <div class="modal-footer">
+    <div class="row mb-2">
+      <button (click)="modal.close(form)" class="btn btn-primary mce-btn-group" [disabled]="productForm.invalid">ثبت</button>
+    </div>
+  </div> -->
+</ng-template>
