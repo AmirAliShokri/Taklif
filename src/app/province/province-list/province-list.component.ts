@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProvinceService } from '../Shared/province.service';
 
 @Component({
@@ -8,7 +9,10 @@ import { ProvinceService } from '../Shared/province.service';
 })
 export class ProvinceListComponent implements OnInit {
   provinces = [];
-  constructor(private service: ProvinceService) {}
+  constructor(
+    private service: ProvinceService,
+    private modalService: NgbModal
+  ) {}
 
   ngOnInit(): void {
     this.reloadData();

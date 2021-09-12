@@ -1,1 +1,5 @@
-<p>province-select works!</p>
+<ng-select appearance="outline" class="w-100" [items]="province" [virtualScroll]="true" bindLabel="Name"
+  bindValue="LocationId" [clearable]="false" placeholder="آیتم زمانی" [(ngModel)]="selectedProvince"
+  (change)="addToSelected($event)" loadingText="در حال بارگذاری" [dropdownPosition]="'auto'"
+  notFoundText="موردی یافت نشد">
+</ng-select>
