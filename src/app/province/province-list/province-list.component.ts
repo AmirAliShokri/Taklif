@@ -11,6 +11,12 @@ export class ProvinceListComponent implements OnInit {
   constructor(private service: ProvinceService) {}
 
   ngOnInit(): void {
-    this.provinces = this.service.getAll();
+    this.reloadData();
+  }
+
+  reloadData() {
+    this.service.getAll().subscribe((res) => {
+      this.provinces = [...this.provinces, ...res].splice(1, 31);
+    });
   }
 }

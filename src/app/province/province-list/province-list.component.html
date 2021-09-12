@@ -4,8 +4,8 @@
       <th class="fw-bold">#</th>
       <th class="fw-bold">نام استان</th>
     </tr>
-    <tr *ngFor="let item of provinces;let index">
-      <td>{{index}}</td>
+    <tr *ngFor="let item of provinces;let i=index">
+      <td>{{i}}</td>
       <td>{{item.Name}}</td>
     </tr>
   </table>

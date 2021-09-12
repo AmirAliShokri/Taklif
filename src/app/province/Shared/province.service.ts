@@ -9,8 +9,6 @@ export class ProvinceService {
   constructor(private restService: RestService) {}
 
   public getAll(): any {
-    this.restService.getAll(this.resourceName).subscribe((res) => {
-      return res;
-    });
+    return this.restService.getAll(this.resourceName);
   }
 }
