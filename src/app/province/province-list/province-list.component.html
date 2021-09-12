@@ -1,1 +1,12 @@
-<p>province-list works!</p>
+<div class="container col-md-10">
+  <table class="table table-bordered table-striped table-hover">
+    <tr class="table-secondary">
+      <th class="fw-bold">#</th>
+      <th class="fw-bold">نام استان</th>
+    </tr>
+    <tr *ngFor="let item of provinces;let index">
+      <td>{{index}}</td>
+      <td>{{item.Name}}</td>
+    </tr>
+  </table>
+</div>

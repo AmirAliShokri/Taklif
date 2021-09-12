@@ -9,7 +9,7 @@ import { environment } from './../../../environments/environment.prod';
 export class RestService {
   constructor(private client: HttpClient) {}
 
-  public getUrl(resourceName: string) {
+  private getUrl(resourceName: string) {
     return `${environment.baseUrl}${resourceName}`;
   }
 
