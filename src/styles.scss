@@ -1,21 +1,22 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+@import "~@ng-select/ng-select/themes/default.theme.css";
 
 @font-face {
-    font-family: 'B Ziba';
-    src: url('~/src/assets/font/B Ziba_0.ttf') format('ttf');
+  font-family: "B Ziba";
+  src: url("~/src/assets/font/B Ziba_0.ttf") format("ttf");
 }
 
 span {
-    font-family: 'B Ziba';
-    direction: rtl;
+  font-family: "B Ziba";
+  direction: rtl;
 }
-.inp-error{
-    direction: rtl;
-    text-align: right;
-    color: #ff0800;
-  }
-  .inp-div{
-    direction: rtl;
-  }
+.inp-error {
+  direction: rtl;
+  text-align: right;
+  color: #ff0800;
+}
+.inp-div {
+  direction: rtl;
+}
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";

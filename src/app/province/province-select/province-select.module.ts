@@ -7,5 +7,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 @NgModule({
   declarations: [ProvinceSelectComponent],
   imports: [CommonModule, FormsModule, NgSelectModule],
+  exports: [ProvinceSelectComponent],
+  entryComponents: [ProvinceSelectComponent],
 })
 export class ProvinceSelectModule {}

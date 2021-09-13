@@ -7,6 +7,5 @@ import { ProvinceSelectModule } from './province-select/province-select.module';
 @NgModule({
   declarations: [ProvinceListComponent],
   imports: [CommonModule, ProvinceRoutingModule],
-  exports: [ProvinceSelectModule],
 })
 export class ProvinceModule {}
