@@ -9,63 +9,66 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
-  providers:[NgbModalConfig , NgbModal]
+  providers: [NgbModalConfig, NgbModal],
 })
 export class ProductListComponent implements OnInit {
-
-  productForm : FormGroup;
+  productForm: FormGroup;
   productList: ProductModel[] = [
     {
-      Code : 1,
-      Name : "دسته بازی",
-      Price : 10000,
-      IsAvailable : true,
-      count:3
+      Code: 1,
+      Name: 'دسته بازی',
+      Price: 10000,
+      IsAvailable: true,
+      count: 3,
     },
     {
-      Code : 2,
-      Name : " کنسول",
-      Price : 4000000,
-      IsAvailable : false,
-      count:0
-    }
+      Code: 2,
+      Name: ' کنسول',
+      Price: 4000000,
+      IsAvailable: false,
+      count: 0,
+    },
   ];
   constructor(
     private service: ProductService,
     private router: Router,
     private modalService: NgbModal,
-    config: NgbModalConfig) {
+    config: NgbModalConfig
+  ) {}
 
-     }
+  Open(content) {
+    this.modalService.open(content).result.then((result) => {
+      console.log(result);
+    });
+  }
 
   ngOnInit(): void {
     this.productForm = new FormGroup({
-      Code : new FormControl('', Validators.required),
-      Name : new FormControl('', Validators.required),
-      Price : new FormControl('', Validators.required),
-      count : new FormControl('', Validators.required),
+      Code: new FormControl('', Validators.required),
+      Name: new FormControl('', Validators.required),
+      Price: new FormControl('', Validators.required),
+      count: new FormControl('', Validators.required),
     });
   }
-  Add(content){
+  Add(content) {
     this.modalService.open(content).result.then((result) => {
-     console.log(result);
+      console.log(result);
     });
   }
-  Del(){
+  Del() {
     this.productList = [];
   }
-  Pay(code){
+  Pay(code) {
     // this.router.navigate(['/product-pay', code]);
   }
-  onSubmit(form: FormGroup){
+  onSubmit(form: FormGroup) {
     this.productList.push({
-      Code : form.value.Code,
-      Name : form.value.Name,
-      Price : form.value.Price,
-      count : form.value.count,
-      IsAvailable : form.value.count === 0 ? false : true
+      Code: form.value.Code,
+      Name: form.value.Name,
+      Price: form.value.Price,
+      count: form.value.count,
+      IsAvailable: form.value.count === 0 ? false : true,
     });
     this.modalService.dismissAll();
   }
-
 }

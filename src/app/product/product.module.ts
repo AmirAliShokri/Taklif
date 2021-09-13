@@ -5,22 +5,20 @@ import { ProductCreateComponent } from './product-create/product-create.componen
 import { ProductPayComponent } from './product-pay/product-pay.component';
 import { ProductRoutingModule } from './product.module.routing';
 import { ReactiveFormsModule } from '@angular/forms';
-
-
+import { ProvinceSelectModule } from '../province/province-select/province-select.module';
 
 @NgModule({
   declarations: [
     ProductListComponent,
     ProductPayComponent,
-    ProductCreateComponent
+    ProductCreateComponent,
   ],
   imports: [
     CommonModule,
     ProductRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ProvinceSelectModule,
   ],
-  entryComponents: [
-    ProductCreateComponent
-  ]
+  entryComponents: [ProductCreateComponent],
 })
-export class ProductModule { }
+export class ProductModule {}
